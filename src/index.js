@@ -10,8 +10,21 @@ app.listen(PORT, (error) => {
         console.log("Error occurred, server can't start", error);
 }
 );
-app.use('/test', (req, res) => {
-    res.send('Hello From the Server!')
+
+// app.use('/', (req, res) => {
+//     res.send('This is me!')
+// })
+// app.use('/test', (req, res) => {
+//     res.send('Hello From the Server!')
+// })
+
+app.get('/users', (req, res) => {
+    res.send({ 'name': "Himanshu", 'last_name': "Sharma" })
 })
 
-// app.get('/',express.request)
+app.post('/users', (req, res) => {
+    res.send('Data has been added successfully!')
+})
+app.delete('/users/:userId', (req, res) => {
+    res.send('User delete successfully!')
+})
