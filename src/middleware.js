@@ -41,3 +41,12 @@ app.use('/admin', (req, res, next) => {
 app.use('/admin', adminAuth)
 app.use('/user', userAuth)
 // similaryly for everyone 
+
+// but in such case we dont want to restirct the login api but we applied middleware for every route which started with the /user 
+
+// so for this just put the login request before the code where middlware applied like this, as we know the in express order of code always matters then in case when the user calls login api then this api called without any restirction
+app.post('/user/login', (req, res) => {
+    res.send('user logged in!')
+})
+
+app.use('/user', userAuth)
